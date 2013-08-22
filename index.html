@@ -62,7 +62,7 @@
       require(["esri/map",
         "esri/layers/StreamLayer",
         "esri/InfoTemplate",
-        "esri/symbols/PictureMarkerSymbol",
+        "esri/symbols/PictureMarkerSymbol","dijit/Dialog", "dojo/domReady!"
       ], function(Map, StreamLayer, InfoTemplate, PictureMarkerSymbol){
           map = new Map("map",{
             basemap: "gray",
@@ -105,8 +105,11 @@
           }
           function OpenInNewTab(url )
           {
-            var win=window.open(url, '_blank');
-            //win.focus();
+            myDialog = new Dialog({
+            title: "Instagram",
+            content: "Test content.",
+            style: "width: 300px"
+    });
           }
         });
 
