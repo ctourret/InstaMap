@@ -90,6 +90,7 @@
             layer.on("mouse-over", function (e){e.graphic.symbol.setHeight(150);e.graphic.symbol.setWidth(150);e.graphic.setGeometry(e.graphic.geometry);} );
             layer.on("mouse-out", function (e){e.graphic.symbol.setHeight(25);e.graphic.symbol.setWidth(25);e.graphic.setGeometry(e.graphic.geometry);} );
             layer.on("mouse-down", function (e){OpenInNewTab(e.graphic.attributes["Link"]);return;} );
+            layer.on("mouse-up", function (e){e.graphic.symbol.setHeight(25);e.graphic.symbol.setWidth(25);e.graphic.setGeometry(e.graphic.geometry);} );
 
             return layer;
           }
