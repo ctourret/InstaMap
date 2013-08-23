@@ -63,7 +63,7 @@
         "esri/layers/StreamLayer",
         "esri/InfoTemplate",
         "esri/symbols/PictureMarkerSymbol","dijit/Dialog", "dojo/domReady!"
-      ], function(Map, StreamLayer, InfoTemplate, PictureMarkerSymbol){
+      ], function(Map, StreamLayer, InfoTemplate, PictureMarkerSymbol,Dialog){
           map = new Map("map",{
             basemap: "gray",
             center: [-30.402, 45.642],
@@ -109,7 +109,7 @@
             title: "Instagram",
             content: "Test content.",
             style: "width: 300px"
-    });
+            });
           }
         });
 
