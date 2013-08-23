@@ -7,8 +7,7 @@
     <title>Instagram ArcGIS Streamlayer via ArcGIS GeoEvent Processor</title>
     <link rel="stylesheet" href="http://js.arcgis.com/3.6/js/dojo/dijit/themes/tundra/tundra.css">
     <link rel="stylesheet" href="http://js.arcgis.com/3.6/js/esri/css/esri.css">
-    <link rel="shortcut icon" type="image/x-icon" href="http://www.arcgis.com/favicon.ico">
-   <style type="text/css">
+    <style type="text/css">
       html, body {
         height: 100%; width: 100%;
         margin: 0; padding: 0;
@@ -62,8 +61,8 @@
       require(["esri/map",
         "esri/layers/StreamLayer",
         "esri/InfoTemplate",
-        "esri/symbols/PictureMarkerSymbol","dijit/Dialog", "dojo/domReady!"
-      ], function(Map, StreamLayer, InfoTemplate, PictureMarkerSymbol,Dialog){
+        "esri/symbols/PictureMarkerSymbol"
+      ], function(Map, StreamLayer, InfoTemplate, PictureMarkerSymbol){
           map = new Map("map",{
             basemap: "gray",
             center: [-30.402, 45.642],
@@ -89,7 +88,7 @@
             layer.on("message", processMessage);
             layer.on("mouse-over", function (e){e.graphic.symbol.setHeight(150);e.graphic.symbol.setWidth(150);e.graphic.setGeometry(e.graphic.geometry);} );
             layer.on("mouse-out", function (e){e.graphic.symbol.setHeight(25);e.graphic.symbol.setWidth(25);e.graphic.setGeometry(e.graphic.geometry);} );
-            layer.on("click", function (e){OpenInNewTab(e.graphic.attributes["Link"]);return;} );
+            layer.on("mouse-down", function (e){instawin=e.stopPropagation();window.open(e.graphic.attributes["Link"],'_blank');} );
 
             return layer;
           }
@@ -103,17 +102,7 @@
             streamLayer = makeStreamLayer();
             map.addLayer( streamLayer );
           }
-          function OpenInNewTab(url )
-          {
-            myDialog = new Dialog({
-            title: "Instagram",
-            content: "Test content.",
-            href: url,
-            preload: "true",
-            style: "width: 300px"
-            });
-            myDialog.show();
-          }
+
         });
 
   </script>
